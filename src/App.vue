@@ -1,32 +1,54 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <p v-show="shownumber === 1">Выберите опцию</p>
+    <master v-show="shownumber === 2" @pushpersons="pushpersons" @deleteEmit="deleteEmit"/>
+    <show v-show="shownumber === 3" :card="card" :deleteCard="deleteCard" />
+    <button @click="showmaster()">Изменение комнат</button>
+    <button @click="showshow()">Просмотр комнат</button>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import master from './components/master.vue'
+import show from './components/show.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: 'App',
+  
+  data() {
+    return{
+      shownumber: 1,
+      card: [],
+      deleteCard: []
+    }
+  },
+  components: {
+    master,
+    show
+  },
+  methods: {
+      showmaster (){
+        this.shownumber=2
+      },
+      showshow(){
+        this.shownumber=3
+      },
+      pushpersons(persons) {
+      this.card.push({
+          id: persons.length + 1,
+          text: persons,
+          isTodoDelete: this.isDelete
+        })
+    },
+    deleteEmit(deleteEm){
+      this.deleteCard.push({
+        deleteEm
+      })
     }
   }
 }
+</script>
+
+<style lang="sass">
+
 </style>
