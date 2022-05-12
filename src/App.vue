@@ -1,26 +1,48 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="index">
+    <h1 class="head">Список комнат</h1>
+      <div v-for="persons in $store.state.room" :key="persons.i" class="card">
+        <div class="header"> {{persons.text}}</div>
+        <div class="info"> {{persons.info}}</div>
+      </div>
+    <p><button><a href="#/master">Редактор комнат</a></button></p>
+  </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  .index 
+   width: 800px
+   margin-left: 20%
+   border: 1px solid #808080
+   background-color: #dcffeb
+   color: #262626
+   text-align: center
+  a
+   text-decoration: none
+   color: #262626
+  .info
+   color: grey
+   text-align: left
+   position: absolute
+   top: 25px
+   left: 3px
+   right: 3px
+  .card
+   border: 1px solid #808080
+   width: 200px
+   height: 150px
+   display: inline-block
+   margin: 20px
+   position: relative
+  .header
+   color: #262626
 </style>
