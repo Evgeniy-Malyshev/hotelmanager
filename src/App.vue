@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <h1 class="head">Список комнат</h1>
-      <div v-for="persons in $store.state.room" :key="persons.i" class="card">
+      <div v-for="persons in $store.getters.roomList" :key="persons.i" class="card">
         <div class="header"> {{persons.text}}</div>
         <div class="info"> {{persons.info}}</div>
       </div>

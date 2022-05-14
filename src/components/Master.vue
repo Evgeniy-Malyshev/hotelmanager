@@ -5,9 +5,9 @@
     <br>
     <input type="text" v-model="newTextInfo" placeholder="Описание">
     <br>
-    <button @click="textPush">Добавить</button>
+    <button @click="addRoomActive">Добавить</button>
     <ul>
-      <li v-for="persons in $store.state.room" :key="persons.i">
+      <li v-for="persons in $store.getters.roomList" :key="persons.i">
         <span> {{persons.text}}</span>
         <br>
         <span> {{persons.info}}</span>
@@ -33,22 +33,14 @@ export default {
   },
 
   methods: {
-    textPush () {
-      if (this.newText !== '') {
-        this.newText = this.newText[0][0].toUpperCase() + this.newText.substr(1, this.newText.length)
-        this.$store.state.room.push({
-          id: this.$store.state.room.length + 1,
-          text: this.newText,
-          info: this.newTextInfo,
-          isTodoDelete: this.isDelete
-        })
-        this.newText = '',
-        this.newTextInfo = '',
-        this.i = this.i + 1
-      }
+    addRoomActive(){
+      this.$store.commit('addRoom', this.newText, this.newTextInfo, this.isDelete )
+      this.newText = '',
+      this.newTextInfo = '',
+      this.i = this.i + 1
     },
     addDelete (persons) {
-      this.$store.state.room.splice(this.$store.state.room.indexOf(persons), 1)
+      this.$store.getters.roomList.splice(this.$store.getters.roomList.indexOf(persons), 1)
     }
   }
 }
