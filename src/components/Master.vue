@@ -29,12 +29,13 @@ export default {
       newTextInfo: '',
       i: 1,
       isDelete: false,
+      payload: []
     }
   },
 
   methods: {
     addRoomActive(){
-      this.$store.commit('addRoom', this.newText, this.newTextInfo, this.isDelete )
+      this.$store.dispatch('addRoom', {newText: this.newText, newTextInfo: this.newTextInfo, isDelete: this.isDelete}),
       this.newText = '',
       this.newTextInfo = '',
       this.i = this.i + 1
