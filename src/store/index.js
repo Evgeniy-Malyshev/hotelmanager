@@ -1,6 +1,8 @@
-import { createStore } from 'vuex'
+import Vuex from 'vuex'
+import Vue from 'vue';
 
-const store = createStore({
+Vue.use(Vuex);
+const store = new Vuex.Store({
     state () {
       return {
         roomList: [],

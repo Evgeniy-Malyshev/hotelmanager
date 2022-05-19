@@ -1,25 +1,29 @@
 <template>
-  <div class="index">
-    <h1 class="head">Список комнат</h1>
+  <div>
+    <div class="index">
+      <h1 class="head">Список комнат</h1>
       <div v-for="persons in $store.getters.roomList" :key="persons.i" class="card">
-        <div class="header"> {{persons.text}}</div>
-        <div class="info"> {{persons.info}}</div>
+        <div class="header"> {{ persons.text }}</div>
+        <div class="info"> {{ persons.info }}</div>
       </div>
-    <p><button><a href="#/master">Редактор комнат</a></button></p>
+      <p>
+        <button><a href="#/master">Редактор комнат</a></button>
+      </p>
+    </div>
+    <router-view></router-view>
   </div>
-  <router-view></router-view>
 </template>
 
 <script>
 
 
 export default {
-  
+
 }
 </script>
 
 <style lang="sass">
-  .index 
+  .index
    width: 800px
    margin-left: 20%
    border: 1px solid #808080
