@@ -30,7 +30,10 @@ const store = new Vuex.Store({
           id: context.state.roomList.length + 1,
           text: payload.newText,
           info: payload.newTextInfo,
-          isTodoDelete: payload.isDelete
+          isTodoDelete: payload.isDelete,
+          floorNumber: payload.floorNumber,
+          roomsNumber: payload.roomsNumber,
+          rateRoom: payload.rateRoom
         })
     }
       context.commit('addRoomPush')
