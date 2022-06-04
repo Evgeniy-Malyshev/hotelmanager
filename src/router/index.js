@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import master from "../components/Master.vue";
+import ShowRoom from "../components/ShowRoom.vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        {path: '/master', component: master}
+        {path: '/showroom', component: ShowRoom}
     ]
 });
 export default router
